@@ -1,6 +1,6 @@
-# 7697016-Front-End.1
+LesBonnesPieces
 
-Code base du fil rouge pour le cours OpenClassrooms [Créez des pages web dynamiques avec JavaScript](https://openclassrooms.com/fr/courses/7697016-creez-des-pages-web-dynamiques-avec-javascript)
+Projet OpenClassrooms [Créez des pages web dynamiques avec JavaScript](https://openclassrooms.com/fr/courses/7697016-creez-des-pages-web-dynamiques-avec-javascript)
 
 ## Installation
 
