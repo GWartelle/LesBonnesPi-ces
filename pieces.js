@@ -36,15 +36,41 @@ for (let i = 0; i < pieces.length; i++) {
 
  }
  
- const boutonTrier = document.querySelector(".btn-trier");
- boutonTrier.addEventListener("click", () => {
-    const piecesOrdonnees = Array.from(pieces);
-    piecesOrdonnees.sort((a, b) => a.prix - b.prix);
-    console.log(piecesOrdonnees);
- });
+ //gestion des boutons 
+const boutonTrier = document.querySelector(".btn-trier");
 
- const bontonFiltrer = document.querySelector(".btn-filtrer");
- bontonFiltrer.addEventListener("click", () => {
-    const piecesFiltrees = pieces.filter(piece => piece.prix <= 35);
-    console.log(piecesFiltrees);
- });
+boutonTrier.addEventListener("click", function () {
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort(function (a, b) {
+        return a.prix - b.prix;
+     });
+     console.log(piecesOrdonnees);
+});
+
+const boutonFiltrer = document.querySelector(".btn-filtrer");
+
+boutonFiltrer.addEventListener("click", function () {
+    const piecesFiltrees = pieces.filter(function (piece) {
+        return piece.prix <= 35;
+    });
+   console.log(piecesFiltrees)
+});
+
+const bontonDecroissant = document.querySelector(".btn-decroissant");
+
+bontonDecroissant.addEventListener("click", function () {
+    const piecesDecroissants = Array.from(pieces);
+    piecesDecroissants.sort(function (a, b) {
+        return b.prix - a.prix;
+    });
+    console.log(piecesDecroissants);
+});
+
+const boutonNodesc = document.querySelector(".btn-nodesc");
+
+boutonNodesc.addEventListener("click", function () {
+    const piecesNodesc = pieces.filter(function (piece) {
+        return piece.description;
+    });
+    console.log(piecesNodesc);
+});
