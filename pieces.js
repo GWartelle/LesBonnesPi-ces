@@ -56,21 +56,57 @@ boutonFiltrer.addEventListener("click", function () {
    console.log(piecesFiltrees)
 });
 
-const bontonDecroissant = document.querySelector(".btn-decroissant");
-
-bontonDecroissant.addEventListener("click", function () {
-    const piecesDecroissants = Array.from(pieces);
-    piecesDecroissants.sort(function (a, b) {
+const boutonDecroissant = document.querySelector(".btn-decroissant");
+boutonDecroissant.addEventListener("click", function () {
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort(function (a, b) {
         return b.prix - a.prix;
-    });
-    console.log(piecesDecroissants);
+     });
+     console.log(piecesOrdonnees);
 });
 
-const boutonNodesc = document.querySelector(".btn-nodesc");
-
-boutonNodesc.addEventListener("click", function () {
-    const piecesNodesc = pieces.filter(function (piece) {
+const boutonNoDescription = document.querySelector(".btn-nodesc");
+boutonNoDescription.addEventListener("click", function () {
+    const piecesFiltrees = pieces.filter(function (piece) {
         return piece.description;
     });
-    console.log(piecesNodesc);
+   console.log(piecesFiltrees);
 });
+
+const noms = pieces.map(piece => piece.nom);
+for(let i = pieces.length -1 ; i >= 0; i--){
+    if(pieces[i].prix > 35){
+        noms.splice(i,1);
+    }
+}
+
+//Création de la liste
+const abordablesElements = document.createElement('ul');
+//Ajout de chaque nom à la liste
+for(let i=0; i < noms.length ; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = noms[i];
+    abordablesElements.appendChild(nomElement)
+}
+// Ajout de l'en-tête puis de la liste au bloc résultats filtres
+document.querySelector('.abordables')
+    .appendChild(abordablesElements)
+
+const nomsEtPrix = pieces.map(piece => `${piece.nom} + ${piece.prix} €`);
+
+for(let i = pieces.length - 1; i >= 0; i--) {
+    if (!pieces[i].disponibilite) {
+        nomsEtPrix.splice(i,1);
+    }
+}
+
+const disponiblesElements = document.createElement('ul');
+
+for (let i = 0; i < nomsEtPrix.length; i++) {
+    const nomEtPrixElement = document.createElement("li");
+    nomEtPrixElement.innerText = nomsEtPrix[i];
+    disponiblesElements.appendChild(nomEtPrixElement)
+}
+
+document.querySelector(".disponibles")
+    .appendChild(disponiblesElements)
