@@ -36,3 +36,15 @@ for (let i = 0; i < pieces.length; i++) {
 
  }
  
+ const boutonTrier = document.querySelector(".btn-trier");
+ boutonTrier.addEventListener("click", () => {
+    const piecesOrdonnees = Array.from(pieces);
+    piecesOrdonnees.sort((a, b) => a.prix - b.prix);
+    console.log(piecesOrdonnees);
+ });
+
+ const bontonFiltrer = document.querySelector(".btn-filtrer");
+ bontonFiltrer.addEventListener("click", () => {
+    const piecesFiltrees = pieces.filter(piece => piece.prix <= 35);
+    console.log(piecesFiltrees);
+ });
