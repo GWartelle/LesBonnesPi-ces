@@ -1,8 +1,10 @@
-import { ajoutListenersAvis } from "./avis.js";
+import { ajoutListenersAvis, ajoutListenerEnvoyerAvis } from "./avis.js";
 
 // Récupération des pièces depuis le fichier JSON
-const reponse = await fetch('http://localhost:8081/pieces');
+const reponse = await fetch('http://localhost:8081/pieces/');
 const pieces = await reponse.json();
+
+ajoutListenerEnvoyerAvis();
 
 function genererPieces(pieces){
     for (let i = 0; i < pieces.length; i++) {
@@ -42,7 +44,6 @@ function genererPieces(pieces){
         pieceElement.appendChild(avisBouton);
     
      }
-     // Ajout de la fonction ajoutListenersAvis
      ajoutListenersAvis();
 }
 
@@ -98,7 +99,6 @@ for(let i = pieces.length -1 ; i >= 0; i--){
         noms.splice(i,1);
     }
 }
-console.log(noms)
 //Création de l'en-tête
 
 const pElement = document.createElement('p')
@@ -147,4 +147,3 @@ inputPrixMax.addEventListener('input', function(){
     document.querySelector(".fiches").innerHTML = "";
     genererPieces(piecesFiltrees);  
 })
-
